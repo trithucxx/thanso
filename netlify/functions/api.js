@@ -1,5 +1,4 @@
 const axios = require('axios');
-const cors = require('cors');
 
 exports.handler = async function(event, context) {
   // Xử lý CORS
@@ -9,33 +8,43 @@ exports.handler = async function(event, context) {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
       },
       body: ''
     };
   }
 
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== 'GET') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   try {
-    const { name, birthdate } = JSON.parse(event.body);
+    const { fullName, dateOfBirth } = event.queryStringParameters;
     
-    // Gọi API của bạn
-    const response = await axios.post('https://your-api-url.com', { name, birthdate });
+    if (!fullName || !dateOfBirth) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Missing required parameters' })
+      };
+    }
+
+    // Gọi API thực tế
+    const apiUrl = `https://openapi.cozeable.com/numerology/?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
+    const response = await axios.get(apiUrl);
     
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(response.data)
     };
   } catch (error) {
+    console.error('Error:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to fetch data' })
+      body: JSON.stringify({ error: 'Failed to fetch data', details: error.message })
     };
   }
 };
