@@ -4,7 +4,7 @@ document.getElementById('numerologyForm').addEventListener('submit', function(e)
     const fullName = document.getElementById('fullName').value;
     const dateOfBirth = document.getElementById('dateOfBirth').value;
     
-    const proxyUrl = `/.netlify/functions/api?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
+    const proxyUrl = `/netlify/functions/api?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
     
     fetch(proxyUrl)
         .then(response => response.json())
