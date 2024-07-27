@@ -1,26 +1,29 @@
-document.getElementById('numerologyForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const fullName = document.getElementById('fullName').value;
-    const dateOfBirth = document.getElementById('dateOfBirth').value;
-    
-    const proxyUrl = `/.netlify/functions/api?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
-    
-    // URL cho tab mới
-    const newTabUrl = `https://nhangian.com/numerology/?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
+document.addEventListener('DOMContentLoaded', function() {
+    // Lấy thông tin từ URL hoặc localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const fullName = urlParams.get('fullName') || localStorage.getItem('numerologyFullName');
+    const dateOfBirth = urlParams.get('dateOfBirth') || localStorage.getItem('numerologyDateOfBirth');
 
-    // Gọi API
-    fetch(proxyUrl)
-        .then(response => response.json())
-        .then(data => {
-            displayResult(data);
-            // Mở tab mới sau khi nhận được kết quả từ API
-            window.open(newTabUrl, '_blank');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('result').innerHTML = 'Đã xảy ra lỗi khi phân tích. Vui lòng thử lại sau.';
-        });
+    // Xóa thông tin khỏi localStorage sau khi đã sử dụng
+    localStorage.removeItem('numerologyFullName');
+    localStorage.removeItem('numerologyDateOfBirth');
+
+    if (fullName && dateOfBirth) {
+        // Gọi API
+        const proxyUrl = `/.netlify/functions/api?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
+        
+        fetch(proxyUrl)
+            .then(response => response.json())
+            .then(data => {
+                displayResult(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 'Đã xảy ra lỗi khi phân tích. Vui lòng thử lại sau.';
+            });
+    } else {
+        document.getElementById('result').innerHTML = 'Không có thông tin để phân tích.';
+    }
 });
 
 function displayResult(data) {
