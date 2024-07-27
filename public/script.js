@@ -6,10 +6,16 @@ document.getElementById('numerologyForm').addEventListener('submit', function(e)
     
     const proxyUrl = `/.netlify/functions/api?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
     
+    // URL cho tab mới
+    const newTabUrl = `https://nhangian.com/numerology/?fullName=${encodeURIComponent(fullName)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}`;
+
+    // Gọi API
     fetch(proxyUrl)
         .then(response => response.json())
         .then(data => {
             displayResult(data);
+            // Mở tab mới sau khi nhận được kết quả từ API
+            window.open(newTabUrl, '_blank');
         })
         .catch(error => {
             console.error('Error:', error);
