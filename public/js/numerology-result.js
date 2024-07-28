@@ -85,8 +85,7 @@ function displayResult(data) {
             const value = data.cacConSo[key];
             resultHtml += `
                 <div class="number-section">
-                    <h3>${name}: ${formatContent(value.giaTri) || 'Không có thông tin'}</h3>
-                    <p>${formatContent(value.noiDung) || 'Không có thông tin'}</p>
+                    <h3>${name}: ${formatContent(value.giaTri) || 'Không có thông tin'} - ${formatContent(value.noiDung) || 'Không có thông tin'}</h3>
                     ${key === 'duongDoi' && value.khaNangTuongThich ? `<p><strong>Khả năng tương thích:</strong> ${formatContent(value.khaNangTuongThich)}</p>` : ''}
                 </div>
             `;
