@@ -26,6 +26,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+function formatContent(content) {
+    if (!content) return 'Không có thông tin';
+
+    let formattedContent = '';
+    let parts = content.split(/(\r?\n|\r)/);
+
+    parts.forEach(part => {
+        part = part.trim();
+        if (part.startsWith('▪') || part.startsWith('+')) {
+            formattedContent += `<p class="bullet-point" data-bullet="${part[0]}">${part.substring(1).trim()}</p>`;
+        } else if (part.startsWith('###') && part.endsWith('###')) {
+            let innerText = part.substring(3, part.length - 3).trim();
+            formattedContent += `<p class="highlighted-text">${innerText}</p>`;
+        } else if (part) {
+            formattedContent += `<p>${part}</p>`;
+        }
+    });
+
+    return formattedContent;
+}
+
 function displayResult(data) {
     let resultHtml = '<h2>Kết quả phân tích thần số học</h2>';
     resultHtml += `<p><strong>Họ và tên:</strong> ${data.hoVaTen || 'Không có thông tin'}</p>`;
@@ -56,6 +77,8 @@ function displayResult(data) {
         diemBaoMat: 'Số Điểm Bảo mật'
     };
 
+
+    
     // Hiển thị các con số
     for (const [key, name] of Object.entries(numberNames)) {
         if (data.cacConSo[key]) {
@@ -64,7 +87,7 @@ function displayResult(data) {
                 <div class="number-section">
                     <h3>${name}: ${value.giaTri || 'Không có thông tin'}</h3>
                     <p>${value.noiDung || 'Không có thông tin'}</p>
-                    ${key === 'duongDoi' && value.khaNangTuongThich ? `<p><strong>Khả năng tương thích:</strong> ${value.khaNangTuongThich}</p>` : ''}
+                    ${key === 'duongDoi' && value.khaNangTuongThich ? `<p><strong>Khả năng tương thích:</strong> ${formatContent(value.khaNangTuongThich)}</p>` : ''}
                 </div>
             `;
         }
@@ -80,7 +103,7 @@ function displayResult(data) {
                 <p><strong>Độ tuổi:</strong> ${stage.doTuoi || 'Không có thông tin'}</p>
                 <p><strong>Khoảng năm:</strong> ${stage.khoangNam || 'Không có thông tin'}</p>
                 <p><strong>Giá trị:</strong> ${stage.giaTri || 'Không có thông tin'}</p>
-                <p>${stage.noiDung || 'Không có thông tin'}</p>
+                <p>${formatContent(stage.noiDung) || 'Không có thông tin'}</p>
             </div>
         `;
     });
@@ -92,7 +115,7 @@ function displayResult(data) {
             <div class="challenge-section">
                 <h4>Thách thức ${index + 1}</h4>
                 <p><strong>Giá trị:</strong> ${challenge.giaTri || 'Không có thông tin'}</p>
-                <p>${challenge.noiDung || 'Không có thông tin'}</p>
+                <p>${formatContent(challenge.noiDung) || 'Không có thông tin'}</p>
             </div>
         `;
     });
@@ -104,30 +127,8 @@ function displayResult(data) {
         resultHtml += `
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
-                <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
+                <p><strong>Giá trị:</strong> ${formatContent(cycle.giaTri) || 'Không có thông tin'}</p>
         `;
-
-        if (cycle.noiDung) {
-            // Tách nội dung thành các phần
-            let parts = cycle.noiDung.split('▪');
-            
-            // Xử lý phần đầu tiên (có thể là tiêu đề viết hoa)
-            let firstPart = parts.shift().trim();
-            if (firstPart === firstPart.toUpperCase()) {
-                resultHtml += `<p><strong>${firstPart}</strong></p>`;
-            } else {
-                resultHtml += `<p>${firstPart}</p>`;
-            }
-
-            // Xử lý các phần còn lại
-            parts.forEach(part => {
-                resultHtml += `<p>▪ ${part.trim()}</p>`;
-            });
-        } else {
-            resultHtml += '<p>Không có thông tin</p>';
-        }
-
-        resultHtml += '</div>';
     });
     
     // Hiển thị chu kỳ hàng tháng
@@ -137,7 +138,7 @@ function displayResult(data) {
             <div class="monthly-cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
                 <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
-                <p>${cycle.noiDung || 'Không có thông tin'}</p>
+                <p>${formatContent(cycle.noiDung) || 'Không có thông tin'}</p>
             </div>
         `;
     });
