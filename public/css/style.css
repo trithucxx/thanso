@@ -78,21 +78,3 @@ button:hover {
 .cycle-section p:last-child {
     margin-bottom: 0;
 }
-
-.bullet-point {
-    margin-left: 20px;
-    position: relative;
-}
-
-.bullet-point::before {
-    content: attr(data-bullet);
-    position: absolute;
-    left: -20px;
-}
-
-.highlighted-text {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-}
