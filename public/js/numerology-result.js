@@ -127,7 +127,9 @@ function displayResult(data) {
         resultHtml += `
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
-                <p><strong>Giá trị:</strong> ${formatContent(cycle.giaTri) || 'Không có thông tin'}</p>
+                <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
+                <p>${formatContent(cycle.noiDung) || 'Không có thông tin'}</p>
+            </div>
         `;
     });
     
