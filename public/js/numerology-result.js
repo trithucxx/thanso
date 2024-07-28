@@ -70,17 +70,6 @@ function displayResult(data) {
         }
     }
 
-    // Hiển thị chu kỳ hàng năm
-    resultHtml += '<h3>Chu kỳ hàng năm</h3>';
-    data.chuKiHangNam.forEach((cycle, index) => {
-        resultHtml += `
-            <div class="cycle-section">
-                <h4>Chu kỳ ${index + 1}</h4>
-                <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
-                <p>${cycle.noiDung || 'Không có thông tin'}</p>
-            </div>
-        `;
-    });
 
     // Hiển thị các chặng đường đời
     resultHtml += '<h3>Các chặng đường đời</h3>';
@@ -108,6 +97,19 @@ function displayResult(data) {
         `;
     });
 
+
+    // Hiển thị chu kỳ hàng năm
+    resultHtml += '<h3>Chu kỳ hàng năm</h3>';
+    data.chuKiHangNam.forEach((cycle, index) => {
+        resultHtml += `
+            <div class="cycle-section">
+                <h4>Chu kỳ ${index + 1}</h4>
+                <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
+                <p>${cycle.noiDung || 'Không có thông tin'}</p>
+            </div>
+        `;
+    });
+    
     // Hiển thị chu kỳ hàng tháng
     resultHtml += '<h3>Chu kỳ hàng tháng</h3>';
     data.chuKiHangThang.forEach((cycle, index) => {
