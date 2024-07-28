@@ -59,3 +59,22 @@ button:hover {
     }
 }
 
+.cycle-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.cycle-section h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cycle-section p {
+    margin-bottom: 10px;
+}
+
+.cycle-section p:last-child {
+    margin-bottom: 0;
+}

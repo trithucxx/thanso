@@ -105,9 +105,29 @@ function displayResult(data) {
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
                 <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
-                <p>${cycle.noiDung || 'Không có thông tin'}</p>
-            </div>
         `;
+
+        if (cycle.noiDung) {
+            // Tách nội dung thành các phần
+            let parts = cycle.noiDung.split('▪');
+            
+            // Xử lý phần đầu tiên (có thể là tiêu đề viết hoa)
+            let firstPart = parts.shift().trim();
+            if (firstPart === firstPart.toUpperCase()) {
+                resultHtml += `<p><strong>${firstPart}</strong></p>`;
+            } else {
+                resultHtml += `<p>${firstPart}</p>`;
+            }
+
+            // Xử lý các phần còn lại
+            parts.forEach(part => {
+                resultHtml += `<p>▪ ${part.trim()}</p>`;
+            });
+        } else {
+            resultHtml += '<p>Không có thông tin</p>';
+        }
+
+        resultHtml += '</div>';
     });
     
     // Hiển thị chu kỳ hàng tháng
