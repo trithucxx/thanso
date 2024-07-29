@@ -98,12 +98,14 @@ function displayResult(data) {
 
     // Hiển thị các chặng đường đời
     resultHtml += '<h3>Các chặng đường đời</h3>';
-    data.cacChangDuongDoi.forEach((stage, index) => {
-        const imagePath = getImagePath('cacChangDuongDoi', 1);
+    const imagePath = getImagePath('cacChangDuongDoi', 1);
         resultHtml += `
             <div class="stage-image">
                 <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
-            </div>    
+            </div>
+        `;        
+    data.cacChangDuongDoi.forEach((stage, index) => {
+        resultHtml += `    
             <div class="stage-section">
                 <h4>Chặng ${index + 1}</h4>
                 <p><strong>Độ tuổi:</strong> ${stage.doTuoi || 'Không có thông tin'}</p>
@@ -116,15 +118,16 @@ function displayResult(data) {
 
     // Hiển thị thách thức
     resultHtml += '<h3>Thách thức</h3>';
-    data.thachThuc.forEach((challenge, index) => {
-        const imagePath = getImagePath('thachThuc', 1);
+    const imagePath = getImagePath('thachThuc', 1);
         resultHtml += `
             <div class="challenge-image">
-                <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
-            </div>
+                <img src="${imagePath}" alt="Các chặng thách thức" onerror="this.style.display='none';">
+            </div>        
+        `;    
+    data.thachThuc.forEach((challenge, index) => {
+        resultHtml += `
             <div class="challenge-section">
                 <h4>Thách thức ${index + 1}</h4>
-                <img src="${imagePath}" alt="Thách thức ${index + 1}" onerror="this.src='/images/thachThuc.jpg';">
                 <p><strong>Giá trị:</strong> ${challenge.giaTri || 'Không có thông tin'}</p>
                 <p>${formatContent(challenge.noiDung) || 'Không có thông tin'}</p>
             </div>
@@ -134,15 +137,16 @@ function displayResult(data) {
 
     // Hiển thị chu kỳ hàng năm
     resultHtml += '<h3>Chu kỳ hàng năm</h3>';
-    data.chuKiHangNam.forEach((cycle, index) => {
-        const imagePath = getImagePath('chuKiHangNam', 1);
-        resultHtml += `
+    const imagePath = getImagePath('chuKiHangNam', 1);
+        resultHtml += `          
             <div class="cycle-image">
                 <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
             </div>
+        `;
+    data.chuKiHangNam.forEach((cycle, index) => {   
+        resultHtml += ` 
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
-                <img src="${imagePath}" alt="Chu kỳ hàng năm ${index + 1}" onerror="this.src='/images/chuKiHangNam.jpg';">
                 <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
                 <p>${formatContent(cycle.noiDung) || 'Không có thông tin'}</p>
             </div>
