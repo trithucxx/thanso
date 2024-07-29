@@ -125,47 +125,37 @@ button:hover {
     margin-top: 10px;
 }
 
-.stage-image {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.stage-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; /* Điều chỉnh theo nhu cầu */
-    object-fit: contain;
-}
-.stage-section {
-    max-width: 640px;
+/* Styles chung cho các section */
+.stage-section, .challenge-section, .cycle-section {
     margin-bottom: 20px;
 }
 
-.challenge-image {
-    text-align: center;
-    margin-bottom: 20px;
+.stage-section h4, .challenge-section h4, .cycle-section h4 {
+    margin-bottom: 10px;
 }
-.challenge-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; /* Điều chỉnh theo nhu cầu */
-    object-fit: contain;
+
+.stage-section p, .challenge-section p, .cycle-section p {
+    margin-top: 5px;
 }
-.challenge-section {
+
+/* Styles cho hình ảnh */
+.stage-image img, .challenge-image img, .cycle-image img {
     max-width: 640px;
+    width: 100%;
+    height: auto;
+    display: block;
     margin-bottom: 20px;
 }
 
-.cycle-image {
-    text-align: center;
-    margin-bottom: 20px;
+/* Styles cho các tiêu đề chính */
+h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
-.cycle-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; /* Điều chỉnh theo nhu cầu */
-    object-fit: contain;
-}
-.cycle-section {
-    max-width: 640px;
+
+/* Styles cho các section con */
+.stage-section, .challenge-section, .cycle-section {
+    border-left: 3px solid #007bff;
+    padding-left: 15px;
     margin-bottom: 20px;
 }
