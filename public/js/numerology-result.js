@@ -83,6 +83,7 @@ function displayResult(data) {
     for (const [key, name] of Object.entries(numberNames)) {
         if (data.cacConSo[key]) {
             const value = data.cacConSo[key];
+            const imagePath = getImagePath(key, value.giaTri);
             resultHtml += `
                 <div class="number-section">
                     <h3>${name}: ${value.giaTri || 'Không có thông tin'}</h3>
@@ -98,6 +99,7 @@ function displayResult(data) {
     // Hiển thị các chặng đường đời
     resultHtml += '<h3>Các chặng đường đời</h3>';
     data.cacChangDuongDoi.forEach((stage, index) => {
+        const imagePath = getImagePath('cacChangDuongDoi', index + 1);
         resultHtml += `
             <div class="stage-section">
                 <h4>Chặng ${index + 1}</h4>
@@ -113,6 +115,7 @@ function displayResult(data) {
     // Hiển thị thách thức
     resultHtml += '<h3>Thách thức</h3>';
     data.thachThuc.forEach((challenge, index) => {
+        const imagePath = getImagePath('thachThuc', index + 1);
         resultHtml += `
             <div class="challenge-section">
                 <h4>Thách thức ${index + 1}</h4>
@@ -127,6 +130,7 @@ function displayResult(data) {
     // Hiển thị chu kỳ hàng năm
     resultHtml += '<h3>Chu kỳ hàng năm</h3>';
     data.chuKiHangNam.forEach((cycle, index) => {
+        const imagePath = getImagePath('chuKiHangNam', index + 1);
         resultHtml += `
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
