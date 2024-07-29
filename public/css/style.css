@@ -110,13 +110,6 @@ button:hover {
     margin: 0 auto;
 }
 
-.number-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; /* Điều chỉnh theo nhu cầu */
-    object-fit: contain;
-}
-
 .number-image {
     max-width: 100%;
     height: auto;
