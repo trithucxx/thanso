@@ -119,6 +119,9 @@ function displayResult(data) {
     data.thachThuc.forEach((challenge, index) => {
         const imagePath = getImagePath('thachThuc', index + 1);
         resultHtml += `
+            <div class="challenge-image">
+                <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
+            </div>
             <div class="challenge-section">
                 <h4>Thách thức ${index + 1}</h4>
                 <img src="${imagePath}" alt="Thách thức ${index + 1}" onerror="this.src='/images/thachThuc.jpg';">
@@ -134,6 +137,9 @@ function displayResult(data) {
     data.chuKiHangNam.forEach((cycle, index) => {
         const imagePath = getImagePath('chuKiHangNam', index + 1);
         resultHtml += `
+            <div class="cycle-image">
+                <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
+            </div>
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
                 <img src="${imagePath}" alt="Chu kỳ hàng năm ${index + 1}" onerror="this.src='/images/chuKiHangNam.jpg';">

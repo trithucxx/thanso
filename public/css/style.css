@@ -132,3 +132,33 @@ button:hover {
     max-width: 640px;
     margin-bottom: 20px;
 }
+
+.challenge-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.challenge-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Điều chỉnh theo nhu cầu */
+    object-fit: contain;
+}
+.challenge-section {
+    max-width: 640px;
+    margin-bottom: 20px;
+}
+
+.cycle-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.cycle-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Điều chỉnh theo nhu cầu */
+    object-fit: contain;
+}
+.cycle-section {
+    max-width: 640px;
+    margin-bottom: 20px;
+}
