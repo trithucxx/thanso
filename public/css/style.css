@@ -102,3 +102,14 @@ button:hover {
     height: auto;
     margin: 10px 0;
 }
+
+.number-section {
+    max-width: 600px; /* Điều chỉnh giá trị này theo nhu cầu của bạn */
+    margin: 0 auto;
+}
+.number-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
