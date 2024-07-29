@@ -98,9 +98,17 @@ button:hover {
 }
 
 .number-section {
-    max-width: 600px; /* Điều chỉnh theo nhu cầu */
+    max-width: 640px; /* Điều chỉnh theo nhu cầu */
     margin: 0 auto;
 }
+
+.number-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Điều chỉnh theo nhu cầu */
+    object-fit: contain;
+}
+
 .number-image {
     max-width: 100%;
     height: auto;
@@ -121,6 +129,6 @@ button:hover {
     object-fit: contain;
 }
 .stage-section {
-    max-width: 600px;
+    max-width: 640px;
     margin-bottom: 20px;
 }
