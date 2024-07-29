@@ -53,7 +53,7 @@ button:hover {
 }
 
 #result {
-    max-width: 600px;
+    max-width: 640px;
     margin: 20px auto;
     padding: 20px;
     background: #fff;
@@ -106,17 +106,23 @@ button:hover {
 }
 
 .number-section {
-    max-width: 640px; /* Điều chỉnh theo nhu cầu */
-    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
-.number-image {
-    max-width: 100%;
+.number-section h3 {
+    margin-bottom: 10px;
+}
+
+.number-section img {
+    max-width: 640px;
+    width: 100%;
     height: auto;
     display: block;
-    margin: 10px auto;
-    max-height: 300px; /* Điều chỉnh theo nhu cầu */
-    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.number-section p {
+    margin-top: 10px;
 }
 
 .stage-image {
