@@ -101,9 +101,12 @@ function displayResult(data) {
     data.cacChangDuongDoi.forEach((stage, index) => {
         const imagePath = getImagePath('cacChangDuongDoi', index + 1);
         resultHtml += `
+            <div class="stage-image">
+                <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
+            </div>
+        `;
             <div class="stage-section">
                 <h4>Chặng ${index + 1}</h4>
-                <img src="${imagePath}" alt="Chặng ${index + 1}" onerror="this.src='/images/cacChangDuongDoi.jpg';">
                 <p><strong>Độ tuổi:</strong> ${stage.doTuoi || 'Không có thông tin'}</p>
                 <p><strong>Khoảng năm:</strong> ${stage.khoangNam || 'Không có thông tin'}</p>
                 <p><strong>Giá trị:</strong> ${stage.giaTri || 'Không có thông tin'}</p>
@@ -156,6 +159,8 @@ function displayResult(data) {
     document.getElementById('result').innerHTML = resultHtml;
 }
 
-function getImagePath(key) {
-    return `/public/images/${key.toLowerCase()}.jpg`;
+function getImagePath(key, value) {
+    // Chuyển đổi key thành tên file hình ảnh
+    const fileName = key.toLowerCase() + '.jpg';
+    return `/images/${fileName}`;
 }

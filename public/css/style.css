@@ -97,19 +97,30 @@ button:hover {
     font-weight: bold;
 }
 
-.number-image {
-    max-width: 200px;
-    height: auto;
-    margin: 10px 0;
-}
-
 .number-section {
-    max-width: 600px; /* Điều chỉnh giá trị này theo nhu cầu của bạn */
+    max-width: 600px; /* Điều chỉnh theo nhu cầu */
     margin: 0 auto;
 }
 .number-image {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 10px 0;
+    margin: 10px auto;
+    max-height: 300px; /* Điều chỉnh theo nhu cầu */
+    object-fit: contain;
+}
+
+.stage-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.stage-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Điều chỉnh theo nhu cầu */
+    object-fit: contain;
+}
+.stage-section {
+    max-width: 600px;
+    margin-bottom: 20px;
 }
