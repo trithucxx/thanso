@@ -86,6 +86,7 @@ function displayResult(data) {
             resultHtml += `
                 <div class="number-section">
                     <h3>${name}: ${value.giaTri || 'Không có thông tin'}</h3>
+                    <img src="${imagePath}" alt="${name}" onerror="this.src='/public/images/linhHon.jpg';">
                     <p>${formatContent(value.noiDung) || 'Không có thông tin'}</p>
                     ${key === 'duongDoi' && value.khaNangTuongThich ? `<p><strong>Khả năng tương thích:</strong> ${formatContent(value.khaNangTuongThich)}</p>` : ''}
                 </div>
@@ -100,6 +101,7 @@ function displayResult(data) {
         resultHtml += `
             <div class="stage-section">
                 <h4>Chặng ${index + 1}</h4>
+                <img src="${imagePath}" alt="Chặng ${index + 1}" onerror="this.src='/public/images/cacChangDuongDoi.jpg';">
                 <p><strong>Độ tuổi:</strong> ${stage.doTuoi || 'Không có thông tin'}</p>
                 <p><strong>Khoảng năm:</strong> ${stage.khoangNam || 'Không có thông tin'}</p>
                 <p><strong>Giá trị:</strong> ${stage.giaTri || 'Không có thông tin'}</p>
@@ -114,6 +116,7 @@ function displayResult(data) {
         resultHtml += `
             <div class="challenge-section">
                 <h4>Thách thức ${index + 1}</h4>
+                <img src="${imagePath}" alt="Thách thức ${index + 1}" onerror="this.src='/public/images/thachThuc.jpg';">
                 <p><strong>Giá trị:</strong> ${challenge.giaTri || 'Không có thông tin'}</p>
                 <p>${formatContent(challenge.noiDung) || 'Không có thông tin'}</p>
             </div>
@@ -127,6 +130,7 @@ function displayResult(data) {
         resultHtml += `
             <div class="cycle-section">
                 <h4>Chu kỳ ${index + 1}</h4>
+                <img src="${imagePath}" alt="Chu kỳ hàng năm ${index + 1}" onerror="this.src='/public/images/chuKiHangNam.jpg';">
                 <p><strong>Giá trị:</strong> ${cycle.giaTri || 'Không có thông tin'}</p>
                 <p>${formatContent(cycle.noiDung) || 'Không có thông tin'}</p>
             </div>
@@ -146,4 +150,9 @@ function displayResult(data) {
     });
 
     document.getElementById('result').innerHTML = resultHtml;
+}
+
+function getImagePath(key, value) {
+    const imageName = `${key}_${value}.jpg`;
+    return `/public/images/${imageName}`;
 }

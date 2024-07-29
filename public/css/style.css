@@ -96,3 +96,9 @@ button:hover {
     border-radius: 5px;
     font-weight: bold;
 }
+
+.number-image {
+    max-width: 200px;
+    height: auto;
+    margin: 10px 0;
+}
