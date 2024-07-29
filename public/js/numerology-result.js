@@ -104,7 +104,6 @@ function displayResult(data) {
             <div class="stage-image">
                 <img src="${imagePath}" alt="Các chặng đường đời" onerror="this.style.display='none';">
             </div>
-        `;
             <div class="stage-section">
                 <h4>Chặng ${index + 1}</h4>
                 <p><strong>Độ tuổi:</strong> ${stage.doTuoi || 'Không có thông tin'}</p>
